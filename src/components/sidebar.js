@@ -6,7 +6,6 @@ import {
   ListItemIcon,
   ListItemText,
   IconButton,
-  Box,
   Divider,
   Typography,
 } from "@mui/material";
@@ -16,7 +15,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import SettingsIcon from "@mui/icons-material/Settings";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -27,20 +26,46 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* ✅ Fixed Sidebar Toggle Button */}
       <IconButton
         onClick={toggleDrawer}
         sx={{
-          position: "fixed", // Keeps the button in place
+          position: "absolute",
           top: 20,
           left: 20,
-          zIndex: 1500, // Ensures it's always on top
+          zIndex: 1500,
+          width: 50, // Ensure button is a perfect circle
+          height: 50,
           backgroundColor: "white",
           boxShadow: 2,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "50%", // Keeps button circular
           "&:hover": { backgroundColor: "#f0f0f0" },
         }}
       >
-        <MenuIcon />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={open ? "close" : "menu"}
+            initial={{ opacity: 0, rotate: -90 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            exit={{ opacity: 0, rotate: 90 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {open ? (
+              <CloseIcon sx={{ fontSize: 28 }} />
+            ) : (
+              <MenuIcon sx={{ fontSize: 28 }} />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </IconButton>
 
       {/* Sidebar Drawer */}
@@ -50,33 +75,20 @@ const Sidebar = () => {
         onClose={toggleDrawer}
         PaperProps={{
           sx: {
-            width: "250px", // ✅ Ensure fixed width
+            width: "250px",
             background: "rgba(255, 255, 255, 0.9)",
             backdropFilter: "blur(10px)",
             boxShadow: 3,
-            padding: "10px", // ✅ Adds spacing inside sidebar
+            padding: "10px",
           },
         }}
       >
-        <Box
+        {/* Navigation Links */}
+        <List
           sx={{
-            display: "flex",
-            justifyContent: "flex-end", // ✅ Pushes the button to the right
-            alignItems: "center",
-            padding: "10px",
-            position: "absolute",
-            top: 10,
-            right: 10,
+            marginTop: "60px", // Moves menu items further down
           }}
         >
-          {/* Close Button Inside Sidebar */}
-          <IconButton onClick={toggleDrawer}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-
-        {/* Navigation Links */}
-        <List>
           {[
             { text: "Home", icon: <HomeIcon /> },
             { text: "Dashboard", icon: <DashboardIcon /> },
