@@ -50,15 +50,25 @@ const Sidebar = () => {
         onClose={toggleDrawer}
         PaperProps={{
           sx: {
-            width: open ? 250 : 60, // Collapsible Effect
-            transition: "width 0.3s ease-in-out",
-            background: "rgba(255, 255, 255, 0.9)", // Modern Glass Effect
+            width: "250px", // ✅ Ensure fixed width
+            background: "rgba(255, 255, 255, 0.9)",
             backdropFilter: "blur(10px)",
             boxShadow: 3,
+            padding: "10px", // ✅ Adds spacing inside sidebar
           },
         }}
       >
-        <Box sx={{ textAlign: "center", padding: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end", // ✅ Pushes the button to the right
+            alignItems: "center",
+            padding: "10px",
+            position: "absolute",
+            top: 10,
+            right: 10,
+          }}
+        >
           {/* Close Button Inside Sidebar */}
           <IconButton onClick={toggleDrawer}>
             <CloseIcon />
@@ -86,8 +96,16 @@ const Sidebar = () => {
 
         {/* Branding */}
         {open && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-            <Typography variant="body2" align="center" sx={{ marginTop: 2, color: "#666" }}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Typography
+              variant="body2"
+              align="center"
+              sx={{ marginTop: 2, color: "#666" }}
+            >
               Clean Dash © 2025
             </Typography>
           </motion.div>
