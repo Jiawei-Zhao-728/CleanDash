@@ -1,15 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/home/home"; // Adjust the path if needed
+import Sidebar from "./components/sidebar"; // Import Sidebar
+import Home from "./pages/home/home";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        {/* Default route for the Home screen */}
-        <Route path="/" element={<Home />} />
-        {/* Add more routes for other pages as needed */}
-      </Routes>
+      <div style={{ display: "flex" }}>
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

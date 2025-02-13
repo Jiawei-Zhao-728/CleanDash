@@ -3,44 +3,60 @@ const homeStyles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
     height: "100vh",
     fontFamily: "'Roboto', Arial, sans-serif",
-    background:
-      "linear-gradient(to bottom, rgba(34, 193, 195, 0.2), rgba(253, 187, 45, 0.2))",
+    background: "linear-gradient(to bottom, #f8fbff, #fef6e4)", // Softer gradient
     margin: 0,
-    padding: 0,
+    padding: "5% 8%", // More balanced padding
     width: "100%",
+  },
+  heading: {
+    fontWeight: "600",
+    fontSize: "3rem", // Bigger for prominence
+    color: "#222", // Darker for contrast
+    marginBottom: "10px", // Space below heading
+  },
+  description: {
+    fontWeight: "300",
+    fontSize: "1.3rem",
+    color: "#666", // Slightly darker for readability
+    lineHeight: "1.6", // Better text spacing
+    marginBottom: "20px", // More space before search bar
   },
   inputBox: {
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    maxWidth: "1000px",
-    padding: "0 16px",
+    maxWidth: "600px",
+    padding: "0",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.05)", // Soft shadow for depth
+    borderRadius: "30px", // Modern rounded edges
   },
   textField: {
     width: "100%",
-    maxWidth: "600px",
-    minWidth: "300px",
+    borderRadius: "30px",
+    backgroundColor: "white",
+    boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow
     "& .MuiOutlinedInput-root": {
-      borderRadius: "25px",
+      borderRadius: "30px",
+      padding: "12px 20px", // More padding for a clean look
       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-        borderColor: "orange",
+        borderColor: "#ff9800",
       },
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "orange",
+      color: "#ff9800",
     },
   },
   searchIconWrapper: {
-    backgroundColor: "orange",
+    backgroundColor: "#ff9800",
     borderRadius: "50%",
-    padding: "6px",
+    padding: "10px",
     color: "white",
+    marginLeft: "-40px", // Move inside the text box
     "&:hover": {
-      backgroundColor: "darkorange",
+      backgroundColor: "#e68900",
     },
   },
 };
