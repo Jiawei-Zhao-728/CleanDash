@@ -1,6 +1,6 @@
 # CleanDash
 
-# A Minimalistic DashBoard for a City or a Location
+### A Minimalistic DashBoard for a City or a Location
 
 # Getting Started with Create React App
 
