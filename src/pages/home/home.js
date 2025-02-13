@@ -14,14 +14,14 @@ import "@fontsource/roboto";
 function Home() {
   return (
     <Box sx={homeStyles.container}>
-      {/* Heading */}
+      {/* Heading with Emoji */}
       <Typography variant="h3" sx={homeStyles.heading}>
-        Clean Dash
+        🌍 Clean Dash
       </Typography>
 
-      {/* Description */}
+      {/* Description with Emoji */}
       <Typography variant="body1" sx={homeStyles.description}>
-        Your city dashboard, one search away.
+        Your city dashboard, one search away. 🔍📍
       </Typography>
 
       {/* Search Bar */}
@@ -30,7 +30,7 @@ function Home() {
       />
       <Box sx={homeStyles.inputBox}>
         <TextField
-          label="Search city..."
+          label="🏙️ Search City Name..."
           variant="outlined"
           sx={homeStyles.textField}
           slotProps={{
