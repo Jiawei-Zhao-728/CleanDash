@@ -11,6 +11,7 @@ const homeStyles = {
     padding: "5% 8%",
     boxSizing: "border-box", // Prevents extra height from padding
     overflow: "hidden", // Prevents scrolling
+    position: "fixed", // Fixes background in place
   },
   inputBox: {
     display: "flex",

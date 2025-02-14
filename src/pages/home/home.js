@@ -1,52 +1,32 @@
 import React from "react";
-import {
-  Box,
-  TextField,
-  InputAdornment,
-  IconButton,
-  Typography,
-  Divider,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { Box } from "@mui/material";
+import Sidebar from "../../components/Sidebar";
+import SearchComponent from "../../components/SearchComponent";
 import homeStyles from "./homeStyles";
 import "@fontsource/roboto";
 
-function Home() {
+function Home({ sidebarOpen, setSidebarOpen }) {
   return (
     <Box sx={homeStyles.container}>
-      {/* Heading with Emoji */}
-      <Typography variant="h3" sx={homeStyles.heading}>
-        🌍 Clean Dash
-      </Typography>
+      {/* Sidebar (floating on top) */}
+      <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
 
-      {/* Description with Emoji */}
-      <Typography variant="body1" sx={homeStyles.description}>
-        Your city dashboard, one search away. 🔍📍
-      </Typography>
-
-      {/* Search Bar */}
-      <Divider
-        sx={{ width: "80%", margin: "20px 0", borderColor: "#e0e0e0" }}
-      />
-      <Box sx={homeStyles.inputBox}>
-        <TextField
-          label="🏙️ Search City Name..."
-          variant="outlined"
-          sx={homeStyles.textField}
-          slotProps={{
-            input: {
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    sx={homeStyles.searchIconWrapper}
-                    onClick={() => alert("Search button clicked!")}
-                  >
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            },
-          }}
+      {/* Adjusted Main Content Position (Using Golden Ratio) */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          justifyContent: "center",
+          height: "100vh",
+          paddingLeft: sidebarOpen ? "220px" : "80px", // Adjust padding so movement is smooth
+          transition: "padding-left 0.3s ease-in-out",
+        }}
+      >
+        {/* Search Component (Title, Subtitle, and Search Bar) */}
+        <SearchComponent
+          placeholder="🏙️ Search City Name..."
+          sidebarOpen={sidebarOpen}
         />
       </Box>
     </Box>
