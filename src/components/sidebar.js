@@ -53,7 +53,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           transition: { duration: 0.3, ease: "easeInOut" },
         }}
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           left: 0,
           height: "100vh",
